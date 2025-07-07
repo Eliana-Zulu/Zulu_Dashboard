@@ -47,7 +47,7 @@ export const ProfitabilityChart = () => {
           <Bar 
             yAxisId="profit"
             dataKey="profit" 
-            fill="hsl(142 76% 36%)" 
+            fill="hsl(328 100% 63%)" 
             name="Monthly Profit"
             radius={[4, 4, 0, 0]}
           />
@@ -55,10 +55,10 @@ export const ProfitabilityChart = () => {
             yAxisId="margin"
             type="monotone" 
             dataKey="margin" 
-            stroke="hsl(217 91% 60%)" 
+            stroke="hsl(219 100% 53%)" 
             strokeWidth={3}
             name="Profit Margin %"
-            dot={{ fill: 'hsl(217 91% 60%)', strokeWidth: 2, r: 4 }}
+            dot={{ fill: 'hsl(219 100% 53%)', strokeWidth: 2, r: 4 }}
           />
         </ComposedChart>
       </ResponsiveContainer>

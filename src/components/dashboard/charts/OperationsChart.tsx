@@ -34,9 +34,9 @@ export const OperationsChart = () => {
             }}
           />
           <Legend />
-          <Bar dataKey="flagged" fill="hsl(38 92% 50%)" name="Flagged" radius={[2, 2, 0, 0]} />
-          <Bar dataKey="reviewed" fill="hsl(217 91% 60%)" name="Reviewed" radius={[2, 2, 0, 0]} />
-          <Bar dataKey="resolved" fill="hsl(142 76% 36%)" name="Resolved" radius={[2, 2, 0, 0]} />
+          <Bar dataKey="flagged" fill="hsl(39 100% 50%)" name="Flagged" radius={[2, 2, 0, 0]} />
+          <Bar dataKey="reviewed" fill="hsl(219 100% 53%)" name="Reviewed" radius={[2, 2, 0, 0]} />
+          <Bar dataKey="resolved" fill="hsl(328 100% 63%)" name="Resolved" radius={[2, 2, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>

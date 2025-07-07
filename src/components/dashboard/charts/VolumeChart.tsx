@@ -39,26 +39,26 @@ export const VolumeChart = () => {
           <Line 
             type="monotone" 
             dataKey="cashIn" 
-            stroke="hsl(142 76% 36%)" 
+            stroke="hsl(328 100% 63%)" 
             strokeWidth={3}
             name="Cash-In Volume"
-            dot={{ fill: 'hsl(142 76% 36%)', strokeWidth: 2, r: 4 }}
+            dot={{ fill: 'hsl(328 100% 63%)', strokeWidth: 2, r: 4 }}
           />
           <Line 
             type="monotone" 
             dataKey="cashOut" 
-            stroke="hsl(38 92% 50%)" 
+            stroke="hsl(39 100% 50%)" 
             strokeWidth={3}
             name="Cash-Out Volume"
-            dot={{ fill: 'hsl(38 92% 50%)', strokeWidth: 2, r: 4 }}
+            dot={{ fill: 'hsl(39 100% 50%)', strokeWidth: 2, r: 4 }}
           />
           <Line 
             type="monotone" 
             dataKey="usdc" 
-            stroke="hsl(217 91% 60%)" 
+            stroke="hsl(219 100% 53%)" 
             strokeWidth={3}
             name="USDC Volume"
-            dot={{ fill: 'hsl(217 91% 60%)', strokeWidth: 2, r: 4 }}
+            dot={{ fill: 'hsl(219 100% 53%)', strokeWidth: 2, r: 4 }}
           />
         </LineChart>
       </ResponsiveContainer>

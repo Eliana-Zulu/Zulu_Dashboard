@@ -18,12 +18,12 @@ export const TrendsChart = () => {
         <AreaChart data={data}>
           <defs>
             <linearGradient id="volumeGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="hsl(217 91% 60%)" stopOpacity={0.8}/>
-              <stop offset="95%" stopColor="hsl(217 91% 60%)" stopOpacity={0.1}/>
+              <stop offset="5%" stopColor="hsl(219 100% 53%)" stopOpacity={0.8}/>
+              <stop offset="95%" stopColor="hsl(219 100% 53%)" stopOpacity={0.1}/>
             </linearGradient>
             <linearGradient id="usersGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="hsl(262 83% 58%)" stopOpacity={0.8}/>
-              <stop offset="95%" stopColor="hsl(262 83% 58%)" stopOpacity={0.1}/>
+              <stop offset="5%" stopColor="hsl(291 65% 61%)" stopOpacity={0.8}/>
+              <stop offset="95%" stopColor="hsl(291 65% 61%)" stopOpacity={0.1}/>
             </linearGradient>
           </defs>
           <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
@@ -58,7 +58,7 @@ export const TrendsChart = () => {
             yAxisId="volume"
             type="monotone"
             dataKey="volume"
-            stroke="hsl(217 91% 60%)"
+            stroke="hsl(219 100% 53%)"
             fillOpacity={1}
             fill="url(#volumeGradient)"
             name="Total Volume"
@@ -68,7 +68,7 @@ export const TrendsChart = () => {
             yAxisId="users"
             type="monotone"
             dataKey="newUsers"
-            stroke="hsl(262 83% 58%)"
+            stroke="hsl(291 65% 61%)"
             fillOpacity={1}
             fill="url(#usersGradient)"
             name="New Users"

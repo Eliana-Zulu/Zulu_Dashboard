@@ -38,8 +38,8 @@ export const CountryFlowChart = () => {
             }}
             formatter={(value: number) => [`$${(value / 1000).toFixed(0)}K`, '']}
           />
-          <Bar dataKey="inflow" fill="hsl(142 76% 36%)" name="Inflow" radius={[0, 4, 4, 0]} />
-          <Bar dataKey="outflow" fill="hsl(38 92% 50%)" name="Outflow" radius={[0, 4, 4, 0]} />
+          <Bar dataKey="inflow" fill="hsl(328 100% 63%)" name="Inflow" radius={[0, 4, 4, 0]} />
+          <Bar dataKey="outflow" fill="hsl(39 100% 50%)" name="Outflow" radius={[0, 4, 4, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>
