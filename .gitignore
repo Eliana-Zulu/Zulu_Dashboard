@@ -25,3 +25,4 @@ dist-ssr
 
 #La cuenta de servicio
 service-account.json
+.env
