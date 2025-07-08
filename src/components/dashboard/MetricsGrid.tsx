@@ -2,17 +2,34 @@
 import { Card } from "@/components/ui/card";
 import { TrendingUp, TrendingDown, Users, DollarSign, Activity, Percent } from "lucide-react";
 import { DashboardFilters } from "@/pages/Index";
+import { useSheetData } from "@/hooks/useSheetData";
+import { useEffect, useState } from 'react';
+import { parseEuroNumber } from "@/lib/numberUtils";
 
 interface MetricsGridProps {
   filters: DashboardFilters;
 }
 
 export const MetricsGrid = ({ filters }: MetricsGridProps) => {
-  // Mock data - in real app, this would come from API based on filters
+  const { data, loading, error } = useSheetData();
+
+   // Métricas en tiempo real
+  const totalTransactions = data.length;
+  const totalCashIn = data.reduce((sum, row) => sum + parseEuroNumber(row.ci_fiat_value || 0), 0);
+  const totalCashOut = data.reduce((sum, row) => sum + parseEuroNumber(row.co_fiat_value || 0), 0);
+  const uniqueUsers = new Set(data.map(row => row.user)).size;
+  const totalProfit = data.reduce((sum, row) => sum + parseEuroNumber(row.profit_value || 0), 0);
+  const avgProfitMargin = data.length
+    ? (data.reduce((sum, row) => sum + parseEuroNumber(row.profit_margin || 0), 0) / data.length)
+    : 0;
+  const usdcVolumeIn = data.reduce((sum, row) => sum + parseEuroNumber(row.ci_USDC_value || 0), 0);
+  const usdcVolumeOut = data.reduce((sum, row) => sum + parseEuroNumber(row.co_usdc_value || 0), 0);
+
+
   const metrics = [
     {
       title: "Total Transactions",
-      value: "15,247",
+      value: totalTransactions.toLocaleString(),
       change: "+12.5%",
       trend: "up",
       icon: Activity,
@@ -20,7 +37,7 @@ export const MetricsGrid = ({ filters }: MetricsGridProps) => {
     },
     {
       title: "Total Cash-In Volume",
-      value: "$2.4M",
+      value: "$" + totalCashIn.toLocaleString(),
       change: "+8.2%",
       trend: "up",
       icon: TrendingUp,
@@ -28,7 +45,7 @@ export const MetricsGrid = ({ filters }: MetricsGridProps) => {
     },
     {
       title: "Total Cash-Out Volume",
-      value: "$2.2M",
+      value: "$" + totalCashOut.toLocaleString(),
       change: "+5.7%",
       trend: "up",
       icon: TrendingDown,
@@ -36,7 +53,7 @@ export const MetricsGrid = ({ filters }: MetricsGridProps) => {
     },
     {
       title: "Unique Users",
-      value: "3,892",
+      value: uniqueUsers.toLocaleString(),
       change: "+15.3%",
       trend: "up",
       icon: Users,
@@ -44,7 +61,7 @@ export const MetricsGrid = ({ filters }: MetricsGridProps) => {
     },
     {
       title: "Total Profit",
-      value: "$184.5K",
+      value: "$" + totalProfit.toLocaleString(),
       change: "+22.1%",
       trend: "up",
       icon: DollarSign,
@@ -52,7 +69,7 @@ export const MetricsGrid = ({ filters }: MetricsGridProps) => {
     },
     {
       title: "Avg Profit Margin",
-      value: "7.8%",
+      value: avgProfitMargin.toFixed(2) + "%",
       change: "+1.2%",
       trend: "up",
       icon: Percent,
@@ -60,7 +77,7 @@ export const MetricsGrid = ({ filters }: MetricsGridProps) => {
     },
     {
       title: "USDC Volume In",
-      value: "$1.8M",
+      value: "$" + usdcVolumeIn.toLocaleString(),
       change: "+18.9%",
       trend: "up",
       icon: TrendingUp,
@@ -68,13 +85,17 @@ export const MetricsGrid = ({ filters }: MetricsGridProps) => {
     },
     {
       title: "USDC Volume Out",
-      value: "$1.7M",
+      value: "$" + usdcVolumeOut.toLocaleString(),
       change: "+16.4%",
       trend: "up",
       icon: TrendingDown,
       color: "text-indigo-400"
     }
   ];
+
+  if (loading) return <p>Loading metrics…</p>;
+  if (error) return <p className="text-red-500">Error: {error}</p>;
+
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
