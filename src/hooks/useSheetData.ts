@@ -49,14 +49,28 @@ export function useSheetData() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('http://localhost:4000/api/sheet')
+    function consultarExcelito(){
+      fetch('http://localhost:4000/api/sheet')
       .then((res) => {
         if (!res.ok) throw new Error('Failed to fetch');
         return res.json();
       })
-      .then(setData)
+      .then((data) => {
+        console.log("CEDV:", data)
+        if (!data.length) {
+          consultarExcelito();
+          return;
+        }
+
+        setData(data);
+
+        setTimeout(consultarExcelito, 30000);
+      })
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
+    }
+
+    consultarExcelito();
   }, []);
 
   return { data, loading, error };

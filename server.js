@@ -20,11 +20,15 @@ app.get('/api/sheet', async (req, res) => {
   try {
     const client = await auth.getClient();
     const sheets = google.sheets({ version: 'v4', auth: client });
+    
+    console.log('"' + process.env.SHEET_ID +'"')
 
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SHEET_ID,
       range: 'Data!A1:AH16227', // Ajusta el nombre y rango de la hoja
     });
+    
+    console.log(response)
 
     const [headers, ...rows] = response.data.values;
 
