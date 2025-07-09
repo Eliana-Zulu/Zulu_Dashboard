@@ -23,7 +23,7 @@ app.get('/api/sheet', async (req, res) => {
 
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SHEET_ID,
-      range: 'Data!A1:AH9731', // Ajusta el nombre y rango de la hoja
+      range: 'Data!A1:AH16227', // Ajusta el nombre y rango de la hoja
     });
 
     const [headers, ...rows] = response.data.values;
